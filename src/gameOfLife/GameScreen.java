@@ -21,10 +21,8 @@ public class GameScreen extends JFrame {
 	
 	private JLabel timerLabel;	
 	private JTextField delayField;
-	
-	private JLabel cellSizeLabel;
-	private JTextField cellSizeField;
 
+	
 	public GameScreen() {
 		super("Game of Life");
 

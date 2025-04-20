@@ -50,6 +50,7 @@ public class GameOfLife {
 			        if (timer != null && timer.isRunning()) {
 			        	generationCount = 0;
 				        screen.getGenerationLabel().setText("0");
+				        
 				        DELAY = screen.getDelay();
 				        idadeMaxima = screen.getMaxAge(); 
 			            timer.stop();

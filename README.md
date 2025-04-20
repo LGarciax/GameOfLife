@@ -19,7 +19,7 @@ O jogo simula a evolução de uma população de células em um grid bidimension
 
 ![Demonstração do jogo](demo.webp)
 
-> Caso a animação não carregue corretamente no GitHub, abra o arquivo `demo.gif` diretamente em seu navegador.
+> Caso a animação não carregue corretamente no GitHub, abra o arquivo `demo.wepb` diretamente em seu navegador.
 
 ## ⚙️ Como Rodar
 
