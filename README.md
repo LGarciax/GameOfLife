@@ -32,8 +32,8 @@ O jogo simula a evolução de uma população de células em um grid bidimension
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/LGarciax/jogo-da-vida.git
-   cd jogo-da-vida
+   git clone https://github.com/LGarciax/GameOfLife.git
+   cd GameOfLife
    ```
 
 2. Compile e execute:
