@@ -9,6 +9,7 @@ public class GameOfLife {
 	private static boolean jogoIniciado = false;
 	private static int idadeMaxima = 10;
 	private static int generationCount = 0;
+	private static int aliveCellCount = 0;
 
 	public static void main(String[] args) {
 
@@ -30,7 +31,11 @@ public class GameOfLife {
 
 				for (int i = 0; i < linhas; i++) {
 					for (int j = 0; j < colunas; j++) {
-						grid[i][j] = new Cell(Status.randomStatus(), idadeMaxima);
+						Status stats = Status.randomStatus();
+						if(stats == Status.ALIVE) {
+							aliveCellCount += 1;
+						}
+						grid[i][j] = new Cell(stats, idadeMaxima);
 					}
 				}
 				updateGridPanel(panel, grid);
@@ -40,6 +45,7 @@ public class GameOfLife {
 			        updateGridPanel(panel, grid);
 			        generationCount++;
 			        screen.getGenerationLabel().setText(""+generationCount);
+			        screen.getaliveCellLabel().setText(""+aliveCellCount);
 					}
 			    });				
 				
@@ -49,10 +55,11 @@ public class GameOfLife {
 			    reiniciar.addActionListener(e -> {
 			        if (timer != null && timer.isRunning()) {
 			        	generationCount = 0;
+			        	aliveCellCount = 0;
 				        screen.getGenerationLabel().setText("0");
-				        
 				        DELAY = screen.getDelay();
 				        idadeMaxima = screen.getMaxAge(); 
+				        screen.getaliveCellLabel().setText(""+aliveCellCount);
 			            timer.stop();
 			           
 			        }
@@ -62,7 +69,11 @@ public class GameOfLife {
 			        Cell[][] newGrid = new Cell[linhas][colunas];
 			        for (int i = 0; i < linhas; i++) {
 			            for (int j = 0; j < colunas; j++) {
-			                newGrid[i][j] = new Cell(Status.randomStatus(), idadeMaxima);
+			            	Status stats = Status.randomStatus();
+			            	if(stats == Status.ALIVE) {
+								aliveCellCount += 1;
+							}
+			                newGrid[i][j] = new Cell(stats, idadeMaxima);
 			            }
 			        }
 
@@ -74,6 +85,7 @@ public class GameOfLife {
 			            updateGridPanel(panel, newGrid);
 			            generationCount++;
 				        screen.getGenerationLabel().setText(""+generationCount);
+				        screen.getaliveCellLabel().setText(""+aliveCellCount);
 			        });
 
 			        timer.start();
@@ -86,6 +98,9 @@ public class GameOfLife {
 	}
 
 	public static void updateGridPanel(GridPanel panel, Cell[][] grid) {
+		
+		aliveCellCount = 0;
+		
 		for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[0].length; j++) {
 				Cell cell = grid[i][j];
@@ -93,6 +108,7 @@ public class GameOfLife {
 				
 				int state = 0;
 				if (cell.isAlive()) {
+					aliveCellCount++;
 				    int age = cell.getAge();
 				    if (idadeMaxima <= 1) {
 				        state = 1; 
@@ -105,6 +121,8 @@ public class GameOfLife {
 				}
 
 				panel.setCell(state, j, i);
+				
+				
 
 			}
 		}

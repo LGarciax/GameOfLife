@@ -12,9 +12,14 @@ public class GameScreen extends JFrame {
 
 	private GridPanel gridPanel;
 	private JPanel controlPanel;
+	
 	private JButton restartButton;
+	
 	private JLabel generationLabel;
 	private JLabel geracoesLabel;
+	
+	private JLabel cellLabel;
+	private JLabel aliveCellLabel;
 	
 	private JLabel idadeLabel;	
 	private JTextField maxAgeField;
@@ -33,7 +38,7 @@ public class GameScreen extends JFrame {
 		controlPanel.setPreferredSize(new Dimension(160, 600));
 
 	
-		controlPanel.add(Box.createRigidArea(new Dimension(0, 350)));
+		controlPanel.add(Box.createRigidArea(new Dimension(0, 300)));
 
 		geracoesLabel = new JLabel("Geracões");
 		geracoesLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -46,6 +51,20 @@ public class GameScreen extends JFrame {
 		generationLabel.setFont(new Font("Courier", Font.PLAIN, 20));
 		generationLabel.setPreferredSize(new Dimension(120, 20));
 		controlPanel.add(generationLabel);
+
+		controlPanel.add(Box.createRigidArea(new Dimension(0, 40)));
+		
+		cellLabel = new JLabel("Celulas Vivas");
+		cellLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		cellLabel.setFont(new Font("Courier", Font.PLAIN, 18));
+		cellLabel.setPreferredSize(new Dimension(120, 20));
+		controlPanel.add(cellLabel);
+
+		aliveCellLabel = new JLabel("000000");
+		aliveCellLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		aliveCellLabel.setFont(new Font("Courier", Font.PLAIN, 20));
+		aliveCellLabel.setPreferredSize(new Dimension(120, 20));
+		controlPanel.add(aliveCellLabel);
 
 		controlPanel.add(Box.createRigidArea(new Dimension(0, 40)));
 
@@ -108,6 +127,10 @@ public class GameScreen extends JFrame {
 
 	public JLabel getGenerationLabel() {
 		return generationLabel;
+	}
+	
+	public JLabel getaliveCellLabel() {
+		return aliveCellLabel;
 	}
 	
 
